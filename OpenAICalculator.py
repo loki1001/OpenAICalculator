@@ -317,6 +317,7 @@ class Calculator(QMainWindow):
         if dialog.exec_() == QDialog.Accepted:
             function, lower_limit, upper_limit = dialog.get_values()   # Get integral inputs from dialog
             integral_expression = f"∫({function}) from {lower_limit} to {upper_limit}"   # Format integral expression
+            self.entry.setText(integral_expression)
             result = query_openai(integral_expression)   # Query OpenAI API for integral result
             self.result_label.setText(f"Integral Result: {result}")   # Update result label with integral result
             self.explain_button.setEnabled(True)   # Enable Explain button
